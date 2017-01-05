@@ -8,7 +8,7 @@
 *NALU：NAL unit,NAL单元*
 > I帧、P帧、B帧都是被封装成一个或者多个NALU进行传输或者存储的   
 >I帧开始之前也有非VCL的NAL单元，用于保存其他信息，比如：PPS、SPS
->>PPS（Picture Parameter Sets）：图像参数集
+>>PPS（Picture Parameter Sets）：图像参数集   
 >>SPS（Sequence Parameter Set）：序列参数集   
 
 >在实际的H264数据帧中，往往帧前面带有00 00 00 01 或 00 00 01分隔符，一般来说编码器编出的首帧数据为PPS与SPS，接着为I帧，后续是B帧、P帧等数据。
