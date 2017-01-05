@@ -1,0 +1,348 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		EE0FFAFD1E1CA9DC0013AB0E /* VideoDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = EE0FFAFC1E1CA9DC0013AB0E /* VideoDecoder.m */; };
+		EE1949861E1B4F3300B793EE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EE1949851E1B4F3300B793EE /* main.m */; };
+		EE1949891E1B4F3300B793EE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EE1949881E1B4F3300B793EE /* AppDelegate.m */; };
+		EE19498C1E1B4F3300B793EE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE19498B1E1B4F3300B793EE /* ViewController.m */; };
+		EE19498F1E1B4F3300B793EE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE19498D1E1B4F3300B793EE /* Main.storyboard */; };
+		EE1949911E1B4F3300B793EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE1949901E1B4F3300B793EE /* Assets.xcassets */; };
+		EE1949941E1B4F3300B793EE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE1949921E1B4F3300B793EE /* LaunchScreen.storyboard */; };
+		EE19499D1E1B4F9F00B793EE /* VideoCapture.m in Sources */ = {isa = PBXBuildFile; fileRef = EE19499C1E1B4F9F00B793EE /* VideoCapture.m */; };
+		EE1949A11E1B550900B793EE /* VideoEncoder.m in Sources */ = {isa = PBXBuildFile; fileRef = EE1949A01E1B550900B793EE /* VideoEncoder.m */; };
+		EEFBAC7B1E1E3A3D00DEE242 /* videoToolBox.h264 in Resources */ = {isa = PBXBuildFile; fileRef = EEFBAC7A1E1E3A3D00DEE242 /* videoToolBox.h264 */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		EE0FFAFB1E1CA9DC0013AB0E /* VideoDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoDecoder.h; sourceTree = "<group>"; };
+		EE0FFAFC1E1CA9DC0013AB0E /* VideoDecoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoDecoder.m; sourceTree = "<group>"; };
+		EE1949811E1B4F3300B793EE /* YSM-VideoToolBox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "YSM-VideoToolBox.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EE1949851E1B4F3300B793EE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		EE1949871E1B4F3300B793EE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		EE1949881E1B4F3300B793EE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		EE19498A1E1B4F3300B793EE /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		EE19498B1E1B4F3300B793EE /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		EE19498E1E1B4F3300B793EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		EE1949901E1B4F3300B793EE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EE1949931E1B4F3300B793EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		EE1949951E1B4F3300B793EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EE19499B1E1B4F9F00B793EE /* VideoCapture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoCapture.h; sourceTree = "<group>"; };
+		EE19499C1E1B4F9F00B793EE /* VideoCapture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoCapture.m; sourceTree = "<group>"; };
+		EE19499F1E1B550900B793EE /* VideoEncoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoEncoder.h; sourceTree = "<group>"; };
+		EE1949A01E1B550900B793EE /* VideoEncoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoEncoder.m; sourceTree = "<group>"; };
+		EEFBAC7A1E1E3A3D00DEE242 /* videoToolBox.h264 */ = {isa = PBXFileReference; lastKnownFileType = file; path = videoToolBox.h264; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EE19497E1E1B4F3300B793EE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		EE1949781E1B4F3300B793EE = {
+			isa = PBXGroup;
+			children = (
+				EE1949831E1B4F3300B793EE /* YSM-VideoToolBox */,
+				EE1949821E1B4F3300B793EE /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		EE1949821E1B4F3300B793EE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EE1949811E1B4F3300B793EE /* YSM-VideoToolBox.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EE1949831E1B4F3300B793EE /* YSM-VideoToolBox */ = {
+			isa = PBXGroup;
+			children = (
+				EE1949871E1B4F3300B793EE /* AppDelegate.h */,
+				EE1949881E1B4F3300B793EE /* AppDelegate.m */,
+				EE19498A1E1B4F3300B793EE /* ViewController.h */,
+				EE19498B1E1B4F3300B793EE /* ViewController.m */,
+				EE19499E1E1B4FA600B793EE /* VideoEncode */,
+				EE19498D1E1B4F3300B793EE /* Main.storyboard */,
+				EE1949901E1B4F3300B793EE /* Assets.xcassets */,
+				EE1949921E1B4F3300B793EE /* LaunchScreen.storyboard */,
+				EEFBAC7A1E1E3A3D00DEE242 /* videoToolBox.h264 */,
+				EE1949951E1B4F3300B793EE /* Info.plist */,
+				EE1949841E1B4F3300B793EE /* Supporting Files */,
+			);
+			path = "YSM-VideoToolBox";
+			sourceTree = "<group>";
+		};
+		EE1949841E1B4F3300B793EE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				EE1949851E1B4F3300B793EE /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		EE19499E1E1B4FA600B793EE /* VideoEncode */ = {
+			isa = PBXGroup;
+			children = (
+				EE19499B1E1B4F9F00B793EE /* VideoCapture.h */,
+				EE19499C1E1B4F9F00B793EE /* VideoCapture.m */,
+				EE19499F1E1B550900B793EE /* VideoEncoder.h */,
+				EE1949A01E1B550900B793EE /* VideoEncoder.m */,
+				EE0FFAFB1E1CA9DC0013AB0E /* VideoDecoder.h */,
+				EE0FFAFC1E1CA9DC0013AB0E /* VideoDecoder.m */,
+			);
+			name = VideoEncode;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EE1949801E1B4F3300B793EE /* YSM-VideoToolBox */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EE1949981E1B4F3300B793EE /* Build configuration list for PBXNativeTarget "YSM-VideoToolBox" */;
+			buildPhases = (
+				EE19497D1E1B4F3300B793EE /* Sources */,
+				EE19497E1E1B4F3300B793EE /* Frameworks */,
+				EE19497F1E1B4F3300B793EE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "YSM-VideoToolBox";
+			productName = "YSM-VideoToolBox";
+			productReference = EE1949811E1B4F3300B793EE /* YSM-VideoToolBox.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EE1949791E1B4F3300B793EE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0810;
+				ORGANIZATIONNAME = "忆思梦";
+				TargetAttributes = {
+					EE1949801E1B4F3300B793EE = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = 7WBB4H4S24;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = EE19497C1E1B4F3300B793EE /* Build configuration list for PBXProject "YSM-VideoToolBox" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = EE1949781E1B4F3300B793EE;
+			productRefGroup = EE1949821E1B4F3300B793EE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EE1949801E1B4F3300B793EE /* YSM-VideoToolBox */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EE19497F1E1B4F3300B793EE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EE1949941E1B4F3300B793EE /* LaunchScreen.storyboard in Resources */,
+				EE1949911E1B4F3300B793EE /* Assets.xcassets in Resources */,
+				EE19498F1E1B4F3300B793EE /* Main.storyboard in Resources */,
+				EEFBAC7B1E1E3A3D00DEE242 /* videoToolBox.h264 in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EE19497D1E1B4F3300B793EE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EE19499D1E1B4F9F00B793EE /* VideoCapture.m in Sources */,
+				EE19498C1E1B4F3300B793EE /* ViewController.m in Sources */,
+				EE0FFAFD1E1CA9DC0013AB0E /* VideoDecoder.m in Sources */,
+				EE1949891E1B4F3300B793EE /* AppDelegate.m in Sources */,
+				EE1949A11E1B550900B793EE /* VideoEncoder.m in Sources */,
+				EE1949861E1B4F3300B793EE /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		EE19498D1E1B4F3300B793EE /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EE19498E1E1B4F3300B793EE /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		EE1949921E1B4F3300B793EE /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EE1949931E1B4F3300B793EE /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		EE1949961E1B4F3300B793EE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		EE1949971E1B4F3300B793EE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EE1949991E1B4F3300B793EE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 7WBB4H4S24;
+				INFOPLIST_FILE = "YSM-VideoToolBox/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "simeng.YSM-VideoToolBox";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		EE19499A1E1B4F3300B793EE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 7WBB4H4S24;
+				INFOPLIST_FILE = "YSM-VideoToolBox/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "simeng.YSM-VideoToolBox";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EE19497C1E1B4F3300B793EE /* Build configuration list for PBXProject "YSM-VideoToolBox" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EE1949961E1B4F3300B793EE /* Debug */,
+				EE1949971E1B4F3300B793EE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EE1949981E1B4F3300B793EE /* Build configuration list for PBXNativeTarget "YSM-VideoToolBox" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EE1949991E1B4F3300B793EE /* Debug */,
+				EE19499A1E1B4F3300B793EE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = EE1949791E1B4F3300B793EE /* Project object */;
+}
