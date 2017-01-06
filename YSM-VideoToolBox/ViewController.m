@@ -56,8 +56,8 @@
 
 - (IBAction)play:(id)sender {
     self.videoDecoder = [[VideoDecoder alloc] init];
-//    [self setupOpenGL];
-    [self setupAVSampleBufferDispalyLayer];
+    [self setupOpenGL];
+//    [self setupAVSampleBufferDispalyLayer];
     
     [self decode];
 }
@@ -78,16 +78,16 @@
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         [_videoDecoder decodeWithPath:path complete:^(CVPixelBufferRef pixelBuffer) {
                 
-            [self dispathPixelBuffer:pixelBuffer];
-//            @autoreleasepool {
-//                CIImage * ciimage = [CIImage imageWithCVPixelBuffer:pixelBuffer];
-//                if (_glContext != [EAGLContext currentContext]){
-//                    [EAGLContext setCurrentContext:_glContext];
-//                }
-//                [_glView bindDrawable];
-//                [_ciContext drawImage:ciimage inRect:CGRectMake(0, 0, _glView.bounds.size.width*2, _glView.bounds.size.height*2) fromRect:ciimage.extent];
-//                [_glView display];
-//            }
+//            [self dispathPixelBuffer:pixelBuffer];
+            @autoreleasepool {
+                CIImage * ciimage = [CIImage imageWithCVPixelBuffer:pixelBuffer];
+                if (_glContext != [EAGLContext currentContext]){
+                    [EAGLContext setCurrentContext:_glContext];
+                }
+                [_glView bindDrawable];
+                [_ciContext drawImage:ciimage inRect:CGRectMake(0, 0, _glView.bounds.size.width*2, _glView.bounds.size.height*2) fromRect:ciimage.extent];
+                [_glView display];
+            }
         }];
     });
 }
