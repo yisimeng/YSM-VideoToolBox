@@ -8,7 +8,7 @@
 *NALU：NAL unit,NAL单元*
 > I帧、P帧、B帧都是被封装成一个或者多个NALU进行传输或者存储的   
 >I帧开始之前也有非VCL的NAL单元，用于保存其他信息，比如：PPS、SPS
->>PPS（Picture Parameter Sets）：图像参数集
+>>PPS（Picture Parameter Sets）：图像参数集   
 >>SPS（Sequence Parameter Set）：序列参数集   
 
 >在实际的H264数据帧中，往往帧前面带有00 00 00 01 或 00 00 01分隔符，一般来说编码器编出的首帧数据为PPS与SPS，接着为I帧，后续是B帧、P帧等数据。
@@ -29,8 +29,8 @@ GOP:Group of picture图像组，一组中包含一个i帧多个bp帧，每个i�
 
 **VideoToolBox硬解码（h264）:**
 
-*1、*读取数据到buffer中，通过startCode“00 00 00 01”定位起始位置
-![](https://cl.ly/0z1f3z0a3s2M/download/Pasted%20Graphic%203.tiff)
+*1、*读取数据到buffer中，通过startCode“00 00 00 01”定位起始位置   
+![](https://cl.ly/0z1f3z0a3s2M/download/Pasted%20Graphic%203.tiff)   
 ，继续移动指针查找到下一个startCode，来确定当前数据集合的长度，并拷贝数据信息。
 
 *2、*解析获取的数据信息，startCode之后的第一个字节保存的是NALU的类型信息。将其转为二进制后：
@@ -38,8 +38,8 @@ GOP:Group of picture图像组，一组中包含一个i帧多个bp帧，每个i�
 >第2~3位：参考级别。   
 >第4~8位：NALU类型。
 
-NALU类型如下图：
-![](https://cl.ly/1I0q1u0U0i1z/download/NAL%E5%8D%95%E5%85%83%E7%B1%BB%E5%9E%8B.png)
+NALU类型如下图：   
+![](https://cl.ly/1I0q1u0U0i1z/download/NAL%E5%8D%95%E5%85%83%E7%B1%BB%E5%9E%8B.png)   
 
 *3、*通过上一步解析出来的sps和pps的信息，创建视频描述CMFormatDescriptionRef，再根据CMFormatDescriptionRef创建生成解码会话VTDecompressionSessionRef。   
 4、读取到视频数据信息后，进行解码。创建CMBlockBufferRef（存放视频图像数据），使用解码会话进行解码，获取解码后的信息存放到CVPixelBufferRef中，通过系统的AVSampleBufferDisplayLayer预览，或者生成图像，通过imageView显示，或者使用OpenGL显示。
