@@ -62,7 +62,7 @@
 }
 
 - (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection{
-    
+    //如果设置了音频输出，需加上判断
     [self.videoEncoder encodeSampleBuffer:sampleBuffer];
 }
 
