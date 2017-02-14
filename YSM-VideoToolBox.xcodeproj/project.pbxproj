@@ -136,7 +136,7 @@
 				TargetAttributes = {
 					EE1949801E1B4F3300B793EE = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = 7WBB4H4S24;
+						DevelopmentTeam = 52Q934DSSV;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -301,7 +301,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 7WBB4H4S24;
+				DEVELOPMENT_TEAM = 52Q934DSSV;
 				INFOPLIST_FILE = "YSM-VideoToolBox/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "simeng.YSM-VideoToolBox";
@@ -313,7 +313,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 7WBB4H4S24;
+				DEVELOPMENT_TEAM = 52Q934DSSV;
 				INFOPLIST_FILE = "YSM-VideoToolBox/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "simeng.YSM-VideoToolBox";

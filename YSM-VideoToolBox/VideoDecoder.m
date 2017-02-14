@@ -75,7 +75,10 @@ const uint8_t startCode[4] = {0,0,0,1};
     //循环读取
     while (true) {
         //读数据
-        [self readStream];
+        if ([self readStream] == NO) {
+            NSLog(@"播放结束");
+            break;
+        }
         
         //转换
         uint32_t nalSize = (uint32_t)(frame_size - 4);
