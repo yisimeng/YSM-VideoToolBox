@@ -8,6 +8,8 @@
 
 #import "VideoEncoder.h"
 
+void didFinishedCompression(void * CM_NULLABLE outputCallbackRefCon, void * CM_NULLABLE sourceFrameRefCon, OSStatus status, VTEncodeInfoFlags infoFlags, CM_NULLABLE CMSampleBufferRef sampleBuffer);
+
 @interface VideoEncoder ()
 
 //文件写入对象
@@ -86,7 +88,7 @@
      @param void <#void description#>
      @return <#return value description#>
      */
-    VTCompressionSessionCreate(NULL, width, height, kCMVideoCodecType_H264, NULL, NULL, NULL, didCompression, (__bridge void *)(self), &_compressionSession);
+    VTCompressionSessionCreate(NULL, width, height, kCMVideoCodecType_H264, NULL, NULL, NULL, didFinishedCompression, (__bridge void *)(self), &_compressionSession);
     
     //4、设置实时编码输出
     VTSessionSetProperty(self.compressionSession, kVTCompressionPropertyKey_RealTime, kCFBooleanTrue);
@@ -113,43 +115,41 @@
     VTCompressionSessionPrepareToEncodeFrames(self.compressionSession);
 }
 
-//完成压缩回调
-void didCompression(void * CM_NULLABLE outputCallbackRefCon, void * CM_NULLABLE sourceFrameRefCon, OSStatus status, VTEncodeInfoFlags infoFlags, CM_NULLABLE CMSampleBufferRef sampleBuffer ){
+/**
+ 关键帧，处理sps和pps
+ 
+ @param sampleBuffer <#sampleBuffer description#>
+ */
+- (void)handleKeyframeSampleBuffer:(CMSampleBufferRef)sampleBuffer{
+    NSLog(@"关键帧");
+    //获取编码后的信息（存储于CMFormatDescriptionRef中）
+    CMFormatDescriptionRef format = CMSampleBufferGetFormatDescription(sampleBuffer);
     
-    // 1.判断状态是否等于没有错误
-    if (status != noErr) {
-        return;
-    }
-    // 2.根据传入的参数获取对象
-    VideoEncoder* encoder = (__bridge VideoEncoder*)outputCallbackRefCon;
+    // 获取SPS信息
+    size_t sparameterSetSize, sparameterSetCount;
+    const uint8_t *sparameterSet;
+    CMVideoFormatDescriptionGetH264ParameterSetAtIndex(format, 0, &sparameterSet, &sparameterSetSize, &sparameterSetCount, 0 );
     
-    // 3.判断是否是关键帧
-    bool isKeyframe = !CFDictionaryContainsKey( (CFArrayGetValueAtIndex(CMSampleBufferGetSampleAttachmentsArray(sampleBuffer, true), 0)), kCMSampleAttachmentKey_NotSync);
-    // 获取sps & pps数据
-    if (isKeyframe){
-        NSLog(@"关键帧");
-        //获取编码后的信息（存储于CMFormatDescriptionRef中）
-        CMFormatDescriptionRef format = CMSampleBufferGetFormatDescription(sampleBuffer);
-        
-        // 获取SPS信息
-        size_t sparameterSetSize, sparameterSetCount;
-        const uint8_t *sparameterSet;
-        CMVideoFormatDescriptionGetH264ParameterSetAtIndex(format, 0, &sparameterSet, &sparameterSetSize, &sparameterSetCount, 0 );
-        
-        // 获取PPS信息
-        size_t pparameterSetSize, pparameterSetCount;
-        const uint8_t *pparameterSet;
-        CMVideoFormatDescriptionGetH264ParameterSetAtIndex(format, 1, &pparameterSet, &pparameterSetSize, &pparameterSetCount, 0 );
-        
-        // 将sps和pps转成NSData
-        NSData *sps = [NSData dataWithBytes:sparameterSet length:sparameterSetSize];
-        NSData *pps = [NSData dataWithBytes:pparameterSet length:pparameterSetSize];
-        
-        // 写入文件
-        [encoder writeSps:sps pps:pps];
-    }
+    // 获取PPS信息
+    size_t pparameterSetSize, pparameterSetCount;
+    const uint8_t *pparameterSet;
+    CMVideoFormatDescriptionGetH264ParameterSetAtIndex(format, 1, &pparameterSet, &pparameterSetSize, &pparameterSetCount, 0 );
     
-    // 获取图像数据区域块
+    // 将sps和pps转成NSData
+    NSData *sps = [NSData dataWithBytes:sparameterSet length:sparameterSetSize];
+    NSData *pps = [NSData dataWithBytes:pparameterSet length:pparameterSetSize];
+    
+    // 写入文件
+    [self writeSps:sps pps:pps];
+}
+
+
+/**
+ 处理图像数据区域
+ 
+ @param sampleBuffer <#sampleBuffer description#>
+ */
+- (void)handleImageDataBuffer:(CMSampleBufferRef)sampleBuffer{
     CMBlockBufferRef dataBuffer = CMSampleBufferGetDataBuffer(sampleBuffer);
     size_t length, totalLength;
     char *dataPointer;
@@ -159,11 +159,11 @@ void didCompression(void * CM_NULLABLE outputCallbackRefCon, void * CM_NULLABLE 
         // 返回的NALU数据前四个字节不是0001的startcode，而是帧长度length
         static const int AVCCHeaderLength = 4;
         /*
-        //前四个字节存放内容查看
-        NSData * redata = [[NSData alloc] initWithBytes:dataPointer length:AVCCHeaderLength];
-        int result = 0;
-        [redata getBytes:&result length:4];
-        NSLog(@"前四个字节：%d",result);
+         //前四个字节存放内容查看
+         NSData * redata = [[NSData alloc] initWithBytes:dataPointer length:AVCCHeaderLength];
+         int result = 0;
+         [redata getBytes:&result length:4];
+         NSLog(@"前四个字节：%d",result);
          */
         
         // 循环读取NALU数据(通过指针偏移读取)
@@ -182,14 +182,13 @@ void didCompression(void * CM_NULLABLE outputCallbackRefCon, void * CM_NULLABLE 
             NSData* data = [[NSData alloc] initWithBytes:(startPointer + AVCCHeaderLength) length:NALUnitLength];
             
             //对数据进行编码
-            [encoder encodedData:data isKeyFrame:isKeyframe];
+            [self encodeImageData:data];
             
             // 修改指针偏移量到下一个NAL unit区域
             // Move to the next NAL unit in the block buffer
             bufferOffset += AVCCHeaderLength + NALUnitLength;
         }
     }
-    
 }
 
 //将sps和pps写入文件
@@ -207,7 +206,7 @@ void didCompression(void * CM_NULLABLE outputCallbackRefCon, void * CM_NULLABLE 
 }
 
 //视频数据编码写入文件
-- (void)encodedData:(NSData*)data isKeyFrame:(BOOL)isKeyFrame{
+- (void)encodeImageData:(NSData*)data{
 //    NSLog(@"encodedData %d", (int)[data length]);
     if (self.fileHandle != NULL){
         //帧头
@@ -240,9 +239,32 @@ void didCompression(void * CM_NULLABLE outputCallbackRefCon, void * CM_NULLABLE 
 - (void)endEncode{
     VTCompressionSessionCompleteFrames(self.compressionSession, kCMTimeInvalid);
     VTCompressionSessionInvalidate(self.compressionSession);
-    CFRelease(self.compressionSession);
-    self.compressionSession = NULL;
+    if (self.compressionSession){
+        CFRelease(self.compressionSession);
+        self.compressionSession = NULL;
+    }
 }
 
-
 @end
+
+//完成压缩回调
+void didFinishedCompression(void * CM_NULLABLE outputCallbackRefCon, void * CM_NULLABLE sourceFrameRefCon, OSStatus status, VTEncodeInfoFlags infoFlags, CM_NULLABLE CMSampleBufferRef sampleBuffer ){
+    
+    // 1.判断状态是否等于没有错误
+    if (status != noErr) {
+        return;
+    }
+    // 2.根据传入的参数获取对象
+    VideoEncoder* encoder = (__bridge VideoEncoder*)outputCallbackRefCon;
+    
+    // 3.判断是否是关键帧
+    bool isKeyframe = !CFDictionaryContainsKey( (CFArrayGetValueAtIndex(CMSampleBufferGetSampleAttachmentsArray(sampleBuffer, true), 0)), kCMSampleAttachmentKey_NotSync);
+    // 3.1 如果是关键帧，需要先写入sps和pps
+    if (isKeyframe){
+        [encoder handleKeyframeSampleBuffer:sampleBuffer];
+    }
+    
+    // 4.获取图像数据区域块
+    [encoder handleImageDataBuffer:sampleBuffer];
+}
+
